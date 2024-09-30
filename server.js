@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
 
 async function downloadVideo(link) {
     try {
@@ -68,4 +69,11 @@ bot.on('message', async (msg) => {
     } catch (error) {
         await bot.sendMessage(msg.chat.id, "We're having trouble sending your media. Please try again later.");
     }
+});
+
+const app = express();
+const PORT = 3003;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
